@@ -1,0 +1,4 @@
+language: objective-c
+xcode_project: ./proj.ios_mac/V.S.SHOOTER.xcodeproj
+xcode_scheme: V.S.SHOOTER iOS
+xcode_sdk: iphonesimulator
