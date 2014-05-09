@@ -30,6 +30,7 @@ bool HelloWorld::init()
     auto listener = EventListenerTouchOneByOne::create();
     listener->onTouchBegan = [=](Touch* touch, Event* event) {
         _prev_pos = touch->getLocation();
+        _shooting = true;
         return true;
     };
     listener->onTouchMoved = [=](Touch* touch, Event* event) {
@@ -41,8 +42,33 @@ bool HelloWorld::init()
     };
     listener->onTouchEnded = [=](Touch* touch, Event* event) {
         _prev_pos = touch->getLocation();
+        _shooting = false;
     };
     dispatcher->addEventListenerWithFixedPriority(listener, 128);
     
+    // ロジックの登録
+    this->schedule(schedule_selector(HelloWorld::playerLogic));
+    
     return true;
+}
+
+void HelloWorld::playerLogic(float dt)
+{
+    if (_shooting)
+    {
+        this->_addBullet();
+    }
+}
+
+void HelloWorld::_addBullet()
+{
+    auto s = Director::getInstance()->getWinSize();
+    
+    auto bullet = Sprite::create("bullet.png");
+    bullet->setPosition(_player->getPosition());
+    this->addChild(bullet);
+    
+    auto mover = MoveBy::create(1.0f, Point(s.width, 0.0f));
+    auto remover = RemoveSelf::create();
+    bullet->runAction(Sequence::create(mover, remover, NULL));
 }

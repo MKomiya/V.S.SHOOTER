@@ -10,9 +10,16 @@ public:
     virtual bool init();
     CREATE_FUNC(HelloWorld);
     
+    // プレイヤー関連処理の更新
+    void playerLogic(float dt);
+    
 private:
+    // プレイヤー関連
     cocos2d::Sprite* _player;
     cocos2d::Point _prev_pos;
+    bool _shooting;
+    
+    void _addBullet();
 };
 
 #endif // __HELLOWORLD_SCENE_H__
