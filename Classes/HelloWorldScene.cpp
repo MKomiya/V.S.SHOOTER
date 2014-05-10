@@ -1,4 +1,6 @@
 #include "HelloWorldScene.h"
+#include "PlayerView.h"
+#include "PlayerModel.h"
 
 USING_NS_CC;
 
@@ -16,12 +18,11 @@ bool HelloWorld::init()
     {
         return false;
     }
-    
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Point origin = Director::getInstance()->getVisibleOrigin();
     
     // プレイヤー表示
-    _player = Sprite::create("player.png");
+    _player = PlayerView::create();
     _player->setPosition(Point(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
     this->addChild(_player, 0);
     
@@ -29,20 +30,19 @@ bool HelloWorld::init()
     auto dispatcher = Director::getInstance()->getEventDispatcher();
     auto listener = EventListenerTouchOneByOne::create();
     listener->onTouchBegan = [=](Touch* touch, Event* event) {
+        _player->getPlayerModel()->setIsShooting(true);
         _prev_pos = touch->getLocation();
-        _shooting = true;
         return true;
     };
     listener->onTouchMoved = [=](Touch* touch, Event* event) {
-        auto pos = touch->getLocation();
-        auto add_pos = pos - _prev_pos;
-        auto new_pos = _player->getPosition() + add_pos;
-        _player->setPosition(new_pos);
-        _prev_pos = pos;
+        auto diff = touch->getLocation() - _prev_pos;
+        auto pos = _player->getPlayerModel()->getPosition() + diff;
+        _player->getPlayerModel()->moveTo(pos);
+        _prev_pos = touch->getLocation();
     };
     listener->onTouchEnded = [=](Touch* touch, Event* event) {
+        _player->getPlayerModel()->setIsShooting(false);
         _prev_pos = touch->getLocation();
-        _shooting = false;
     };
     dispatcher->addEventListenerWithFixedPriority(listener, 128);
     

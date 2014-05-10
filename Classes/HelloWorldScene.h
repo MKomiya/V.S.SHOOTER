@@ -3,6 +3,8 @@
 
 #include "cocos2d.h"
 
+class PlayerView;
+
 class HelloWorld : public cocos2d::Layer
 {
 public:
@@ -15,7 +17,7 @@ public:
     
 private:
     // プレイヤー関連
-    cocos2d::Sprite* _player;
+    PlayerView* _player;
     cocos2d::Point _prev_pos;
     bool _shooting;
     
