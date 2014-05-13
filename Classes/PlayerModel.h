@@ -20,7 +20,6 @@ public:
     void moveTo(cocos2d::Point pos);
     
 private:
-    // 現在と前フレームの座標
     CC_SYNTHESIZE(cocos2d::Point, _pos, Position);
     CC_SYNTHESIZE(bool, _shooting, IsShooting);
 };

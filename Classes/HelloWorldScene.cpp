@@ -1,6 +1,7 @@
 #include "HelloWorldScene.h"
 #include "PlayerView.h"
 #include "PlayerModel.h"
+#include "BulletView.h"
 
 USING_NS_CC;
 
@@ -24,7 +25,10 @@ bool HelloWorld::init()
     // プレイヤー表示
     _player = PlayerView::create();
     _player->setPosition(Point(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+    _player->getPlayerModel()->setPosition(_player->getPosition());
     this->addChild(_player, 0);
+    
+    _prev_pos = _player->getPosition();
     
     // 操作系設定
     auto dispatcher = Director::getInstance()->getEventDispatcher();
@@ -54,7 +58,7 @@ bool HelloWorld::init()
 
 void HelloWorld::playerLogic(float dt)
 {
-    if (_shooting)
+    if (_player->getPlayerModel()->getIsShooting())
     {
         this->_addBullet();
     }
@@ -62,13 +66,6 @@ void HelloWorld::playerLogic(float dt)
 
 void HelloWorld::_addBullet()
 {
-    auto s = Director::getInstance()->getWinSize();
-    
-    auto bullet = Sprite::create("bullet.png");
-    bullet->setPosition(_player->getPosition());
+    auto bullet = BulletView::create(_player->getPosition());
     this->addChild(bullet);
-    
-    auto mover = MoveBy::create(1.0f, Point(s.width, 0.0f));
-    auto remover = RemoveSelf::create();
-    bullet->runAction(Sequence::create(mover, remover, NULL));
 }
