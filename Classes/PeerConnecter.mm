@@ -45,6 +45,8 @@ static PeerConnecter* _sharedData = nil;
     picker.delegate = nil;
     [picker dismiss];
     [picker autorelease];
+    
+    self.parentScene->startSchedule();
 }
 
 - (IBAction)sendText:(id)sender
@@ -111,6 +113,7 @@ inSession: (GKSession *)session context:(void *)context
     cocos2d::Point pos;
     [data getBytes:&pos length:sizeof(cocos2d::Point)];
     self.parentScene->setEnemyPos(pos);
+    CCLOG("X=%.f, Y=%.f", pos.x, pos.y);
 }
 
 @end

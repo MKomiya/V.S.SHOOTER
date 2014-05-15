@@ -14,3 +14,8 @@ void ConnectManager::connectAction(HelloWorld* parent)
 {
     [[PeerConnecter sharedPeerConnecter] connectAction:parent];
 }
+
+void ConnectManager::sendPosision()
+{
+    [[PeerConnecter sharedPeerConnecter] sendText:nil];
+}

@@ -20,12 +20,13 @@ public:
     
     cocos2d::Point getPlayerPos();
     void setEnemyPos(cocos2d::Point pos);
+    void startSchedule();
     
 private:
     // プレイヤー関連
     PlayerView *_player, *_enemy;
     cocos2d::Point _prev_pos;
-    bool _shooting;
+    bool _shooting, _start;
     
     void _addBullet();
 };

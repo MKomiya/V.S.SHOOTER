@@ -23,11 +23,12 @@ bool HelloWorld::init()
     
     cocos2d::Size visibleSize = Director::getInstance()->getVisibleSize();
     cocos2d::Point origin = Director::getInstance()->getVisibleOrigin();
+    _start = false;
     
     // プレイヤー表示
     _player = PlayerView::create();
     _player->setPosition(visibleSize.width/2, visibleSize.height/2);
-    _player->getPlayerModel()->setPosition(_player->getPosition());
+    //_player->getPlayerModel()->setPosition(_player->getPosition());
     this->addChild(_player, 0);
     
     _prev_pos = _player->getPosition();
@@ -42,8 +43,10 @@ bool HelloWorld::init()
     };
     listener->onTouchMoved = [=](Touch* touch, Event* event) {
         auto diff = touch->getLocation() - _prev_pos;
-        auto pos = _player->getPlayerModel()->getPosition() + diff;
-        _player->getPlayerModel()->moveTo(pos);
+        //auto pos = _player->getPlayerModel()->getPosition() + diff;
+        //_player->getPlayerModel()->moveTo(pos);
+        auto pos = _player->getPosition() + diff;
+        _player->setPosition(pos);
         _prev_pos = touch->getLocation();
     };
     listener->onTouchEnded = [=](Touch* touch, Event* event) {
@@ -58,11 +61,9 @@ bool HelloWorld::init()
     // エネミーの表示
     _enemy = PlayerView::create();
     _enemy->setPosition(visibleSize.width * 3.0f / 4.0f + origin.x, visibleSize.height/2 + origin.y);
-    _enemy->getPlayerModel()->setPosition(_enemy->getPosition());
+    //_enemy->getPlayerModel()->setPosition(_enemy->getPosition());
     this->addChild(_enemy, 0);
     _enemy->setFlippedX(true);
-    
-    this->schedule(schedule_selector(HelloWorld::enemyLogic));
     
     ConnectManager::getInstance()->connectAction(this);
     
@@ -71,6 +72,7 @@ bool HelloWorld::init()
 
 void HelloWorld::enemyLogic(float dt)
 {
+    ConnectManager::getInstance()->sendPosision();
 }
 
 void HelloWorld::playerLogic(float dt)
@@ -78,6 +80,9 @@ void HelloWorld::playerLogic(float dt)
     if (_player->getPlayerModel()->getIsShooting())
     {
         this->_addBullet();
+    }
+    if(_start) {
+        ConnectManager::getInstance()->sendPosision();
     }
 }
 
@@ -89,10 +94,18 @@ void HelloWorld::_addBullet()
 
 Point HelloWorld::getPlayerPos()
 {
+    //return _player->getPlayerModel()->getPosition();
     return _player->getPosition();
 }
 
 void HelloWorld::setEnemyPos(cocos2d::Point pos)
 {
+    //_enemy->getPlayerModel()->setPosition(pos);
     _enemy->setPosition(pos);
+}
+
+void HelloWorld::startSchedule()
+{
+    //this->schedule(schedule_selector(HelloWorld::enemyLogic));
+    _start = true;
 }

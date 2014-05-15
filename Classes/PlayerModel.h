@@ -17,10 +17,7 @@ class PlayerModel
 public:
     PlayerModel();
     
-    void moveTo(cocos2d::Point pos);
-    
 private:
-    CC_SYNTHESIZE(cocos2d::Point, _pos, Position);
     CC_SYNTHESIZE(bool, _shooting, IsShooting);
 };
 

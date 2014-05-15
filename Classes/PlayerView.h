@@ -20,9 +20,6 @@ public:
     static PlayerView* create();
     virtual bool init();
     virtual ~PlayerView();
-    
-    void playerMove(cocos2d::Ref* ref);
-    
 private:
     CC_SYNTHESIZE_READONLY(PlayerModel*, _model, PlayerModel);
 };

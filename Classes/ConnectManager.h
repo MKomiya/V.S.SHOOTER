@@ -22,6 +22,7 @@ public:
     }
     
     void connectAction(HelloWorld* scene);
+    void sendPosision();
 };
 
 #endif /* defined(__V_S_SHOOTER__ConnectManager__) */

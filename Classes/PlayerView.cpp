@@ -37,11 +37,5 @@ bool PlayerView::init()
     }
     
     _model = new PlayerModel();
-    __NotificationCenter::getInstance()->addObserver(this, callfuncO_selector(PlayerView::playerMove), "playerMoved", NULL);
     return true;
-}
-
-void PlayerView::playerMove(Ref* ref)
-{
-    this->setPosition(_model->getPosition());
 }
