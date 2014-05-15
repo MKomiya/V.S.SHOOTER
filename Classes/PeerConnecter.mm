@@ -49,6 +49,17 @@ static PeerConnecter* _sharedData = nil;
 
 - (IBAction)sendText:(id)sender
 {
+    cocos2d::Point pos = _parentScene->getPlayerPos();
+    
+    NSMutableData* data = [[NSMutableData alloc] init];
+    [data appendData:[NSData dataWithBytes:&pos length:sizeof(cocos2d::Point)]];
+    
+    NSError* error = nil;
+    [self.session sendData:data toPeers:[NSArray arrayWithObject:self.peerID]
+              withDataMode:GKSendDataReliable error:&error];
+    if (error) {
+        NSLog(@"%@", error);
+    }
 }
 
 - (void)session:(GKSession *)session peer:(NSString *)peerID didChangeState:(GKPeerConnectionState)state
@@ -97,6 +108,9 @@ static PeerConnecter* _sharedData = nil;
 - (void) receiveData:(NSData *)data fromPeer:(NSString *)peer
 inSession: (GKSession *)session context:(void *)context
 {
+    cocos2d::Point pos;
+    [data getBytes:&pos length:sizeof(cocos2d::Point)];
+    self.parentScene->setEnemyPos(pos);
 }
 
 @end

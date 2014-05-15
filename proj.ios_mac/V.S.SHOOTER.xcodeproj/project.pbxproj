@@ -63,6 +63,7 @@
 		D0275C8D191D037D00F6B822 /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = D0275C8C191D037D00F6B822 /* bullet.png */; };
 		D03C82EB19192EF400A18344 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = D03C82EA19192EF400A18344 /* player.png */; };
 		D03F930419222DDC00444678 /* BulletView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D03F930219222DDC00444678 /* BulletView.cpp */; };
+		D0750F681924DEAB00F3CFA9 /* ConnectManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = D0750F661924DEAB00F3CFA9 /* ConnectManager.mm */; };
 		D0B57F68192252D3009965F5 /* PeerConnecter.mm in Sources */ = {isa = PBXBuildFile; fileRef = D0B57F66192252D3009965F5 /* PeerConnecter.mm */; };
 		D0B57F6A192255AE009965F5 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0B57F69192255AE009965F5 /* GameKit.framework */; };
 		D0E73F90191E006D0033280A /* PlayerView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D0E73F8E191E006D0033280A /* PlayerView.cpp */; };
@@ -267,6 +268,8 @@
 		D03C82EA19192EF400A18344 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = player.png; sourceTree = "<group>"; };
 		D03F930219222DDC00444678 /* BulletView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = BulletView.cpp; path = ../Classes/BulletView.cpp; sourceTree = "<group>"; };
 		D03F930319222DDC00444678 /* BulletView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BulletView.h; path = ../Classes/BulletView.h; sourceTree = "<group>"; };
+		D0750F661924DEAB00F3CFA9 /* ConnectManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ConnectManager.mm; path = ../Classes/ConnectManager.mm; sourceTree = "<group>"; };
+		D0750F671924DEAB00F3CFA9 /* ConnectManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConnectManager.h; path = ../Classes/ConnectManager.h; sourceTree = "<group>"; };
 		D0B57F66192252D3009965F5 /* PeerConnecter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PeerConnecter.mm; path = ../Classes/PeerConnecter.mm; sourceTree = "<group>"; };
 		D0B57F67192252D3009965F5 /* PeerConnecter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PeerConnecter.h; path = ../Classes/PeerConnecter.h; sourceTree = "<group>"; };
 		D0B57F69192255AE009965F5 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/GameKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -346,11 +349,11 @@
 		15AA9C4015B7EC450033D6C2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				D0B57F65192252AE009965F5 /* Bluetooth */,
 				1AFAF8B316D35DE700DB1158 /* AppDelegate.cpp */,
-				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
 				1AFAF8B416D35DE700DB1158 /* AppDelegate.h */,
+				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
 				1AFAF8B616D35DE700DB1158 /* HelloWorldScene.h */,
+				D0B57F65192252AE009965F5 /* Bluetooth */,
 				D03F92FC19222CC900444678 /* Bullet */,
 				D0E73F8B191E00560033280A /* Player */,
 			);
@@ -490,6 +493,8 @@
 			children = (
 				D0B57F66192252D3009965F5 /* PeerConnecter.mm */,
 				D0B57F67192252D3009965F5 /* PeerConnecter.h */,
+				D0750F661924DEAB00F3CFA9 /* ConnectManager.mm */,
+				D0750F671924DEAB00F3CFA9 /* ConnectManager.h */,
 			);
 			name = Bluetooth;
 			sourceTree = "<group>";
@@ -709,6 +714,7 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				D0256B03191DF81F00E1C6F0 /* PlayerModel.cpp in Sources */,
+				D0750F681924DEAB00F3CFA9 /* ConnectManager.mm in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				D0B57F68192252D3009965F5 /* PeerConnecter.mm in Sources */,
