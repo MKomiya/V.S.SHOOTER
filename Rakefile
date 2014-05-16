@@ -11,7 +11,7 @@ WORKSPACE_PATH = "#{WORKING_DIRECTORY}/#{APP_NAME}.xcworkspace"
 
 CONFIG_YML = File.exists?("#{WORKING_DIRECTORY}/config.yml") ? YAML.load_file("#{WORKING_DIRECTORY}/config.yml") : nil
 
-project = Xcodeproj::Project.open("#{WORKING_DIRECTORY}/#{APP_NAME}/proj.ios_mac/#{APP_NAME}.xcodeproj")
+project = Xcodeproj::Project.open("#{WORKING_DIRECTORY}/proj.ios_mac/#{APP_NAME}.xcodeproj")
 SCHEME = project.targets.find{|elem| elem.name == APP_NAME}
 APP_SCREEN_NAME = SCHEME.product_reference.display_name
 
