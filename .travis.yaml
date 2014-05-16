@@ -1,5 +1,6 @@
 language: objective-c
 before_install:
+- brew update
 - bundle install
 - rake setup
 script:
