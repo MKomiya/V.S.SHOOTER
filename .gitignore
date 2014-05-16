@@ -2,3 +2,5 @@ cocos2d/build/build/
 proj.ios_mac/build/
 project.xcworkspace
 xcuserdata
+.bundle/
+Gemfile.lock
