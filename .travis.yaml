@@ -1,0 +1,9 @@
+language: objective-c
+before_install:
+- rake setup
+script:
+- rake utest
+after_success:
+- rake download_provisioning_profiles
+- rake build_ipa
+- rake testflight
