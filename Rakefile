@@ -22,7 +22,6 @@ APP_DST_PATH = "#{WORKING_DIRECTORY}/build_app/#{BUILD_CONFIFURATION}"
 
 desc "bundle install"
 task :setup do
-  sh 'bundle install'
   sh 'bundle exec pod install'
 end
 

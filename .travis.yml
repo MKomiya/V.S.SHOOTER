@@ -1,5 +1,6 @@
 language: objective-c
-before_install:
+install:
+- bundle install
 - bundle exec rake setup
 script:
 - bundle exec rake utest
