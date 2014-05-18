@@ -1,7 +1,9 @@
 language: objective-c
 rvm: 1.9.3
+before_install:
+- brew update
+- brew install xctool
 install:
-- bundle install
 - bundle exec rake setup
 script:
 - bundle exec rake utest
